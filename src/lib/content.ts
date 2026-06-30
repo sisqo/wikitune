@@ -16,6 +16,7 @@ export type ArticleMeta = {
   keyword: string
   description: string
   published: boolean
+  order?: number
   tuning_ref?: string
   faqs?: FAQ[]
 }
@@ -85,6 +86,7 @@ export function getAllArticles(): ArticleMeta[] {
     }
   }
 
+  articles.sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
   return articles
 }
 
