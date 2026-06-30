@@ -64,6 +64,39 @@ export const categorie: Categoria[] = [
   },
 ]
 
+const navOrder: Record<string, string[]> = {
+  accordatori: [
+    'accordatore-chitarra-migliori-app',
+    'accordatore-online-gratis',
+    'accordatore-clip-app-pedale',
+    'accordatore-chitarra-12-corde',
+    'accordatore-ukulele',
+  ],
+  'come-accordare': [
+    'come-accordare-chitarra-con-accordatore',
+    'come-accordare-chitarra-a-orecchio',
+    'come-accordare-chitarra-con-diapason',
+    'ogni-quanto-accordare-chitarra',
+    'errori-comuni-accordatura-chitarra',
+    'cambiare-corde-chitarra-si-scorda',
+  ],
+  'accordature-di-base': [
+    'accordatura-standard-eadgbe',
+    'chitarra-6-corde-vs-12-corde',
+    'accordatura-chitarra-12-corde',
+    'accordatura-ukulele-gcea',
+    'accordatura-ukulele-baritono-dgbe',
+    'low-g-high-g-ukulele',
+  ],
+}
+
+function navIndex(a: ArticleMeta): number {
+  const list = navOrder[a.categoria]
+  if (!list) return 999
+  const i = list.indexOf(a.slug)
+  return i === -1 ? 999 : i
+}
+
 export function getCategoriaBySlug(slug: string): Categoria | undefined {
   return categorie.find((c) => c.slug === slug)
 }
@@ -86,16 +119,19 @@ export function getAllArticles(): ArticleMeta[] {
     }
   }
 
-  articles.sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
   return articles
 }
 
 export function getPublishedArticles(): ArticleMeta[] {
-  return getAllArticles().filter((a) => a.published)
+  return getAllArticles()
+    .filter((a) => a.published)
+    .sort((a, b) => navIndex(a) - navIndex(b))
 }
 
 export function getArticlesByCategoria(categoria: string): ArticleMeta[] {
-  return getPublishedArticles().filter((a) => a.categoria === categoria)
+  return getAllArticles()
+    .filter((a) => a.published && a.categoria === categoria)
+    .sort((a, b) => navIndex(a) - navIndex(b))
 }
 
 export function getArticleBySlug(categoria: string, slug: string): Article | null {
