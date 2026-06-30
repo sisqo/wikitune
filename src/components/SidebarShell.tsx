@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import type { ArticleMeta, Categoria } from '@/lib/content'
-import SiteFooter from './SiteFooter'
 
 type Props = {
   categorie: Categoria[]
@@ -142,7 +141,6 @@ export default function SidebarShell({ categorie, articles, children }: Props) {
         <main className="flex-1">
           {children}
         </main>
-        <SiteFooter />
       </div>
     </div>
   )
