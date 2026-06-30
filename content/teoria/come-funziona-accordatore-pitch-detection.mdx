@@ -1,0 +1,59 @@
+---
+title: "Come funziona un accordatore: la pitch detection"
+slug: "come-funziona-accordatore-pitch-detection"
+categoria: "teoria"
+keyword: "come funziona un accordatore"
+description: "Come funziona un accordatore: cattura il suono, misura la frequenza fondamentale con la pitch detection e ti mostra in cent se sei calante o crescente."
+published: true
+faqs:
+  - q: "Come fa un accordatore a capire che nota stai suonando?"
+    a: "Misura la frequenza fondamentale del suono in hertz, cioè quante volte al secondo la corda vibra, cercando la periodicità del segnale. Poi confronta quel valore con la frequenza della nota più vicina e ti dice quanto sei lontano."
+  - q: "Cosa sono i cent sull'accordatore?"
+    a: "I cent misurano lo scarto rispetto alla nota giusta: un semitono vale 100 cent. Quando l'indicatore è vicino allo zero sei intonato, quando si sposta verso il meno sei calante e verso il più sei crescente."
+  - q: "Meglio un accordatore a microfono o a clip?"
+    a: "A microfono è comodo a casa ma risente del rumore, perché capta tutti i suoni nell'aria. A clip legge la vibrazione del legno e resta affidabile anche in ambienti rumorosi o sul palco."
+  - q: "Cosa vuol dire che un accordatore è cromatico?"
+    a: "Significa che riconosce tutte e 12 le note della scala, non solo le sei corde dell'accordatura standard. Per questo è adatto anche alle accordature alternative come il Drop D."
+---
+
+Un accordatore funziona così: cattura il suono della corda, ne misura la frequenza fondamentale e la confronta con la nota che dovresti ottenere, dicendoti se sei **calante** (troppo basso) o **crescente** (troppo alto). Questa lettura della frequenza si chiama *pitch detection* ed è il cuore di qualsiasi accordatore, dal più economico modello a clip all'app sul telefono.
+
+**In pillole:** l'accordatore misura la frequenza fondamentale della corda (pitch detection), la confronta con la frequenza della nota target e ti mostra lo scarto, di solito in cent. Cambia il modo in cui capta il suono — microfono, clip o pedale — ma il principio resta identico.
+
+## Come fa a "sentire" la nota
+
+Quando pizzichi una corda, questa vibra a una velocità precisa, misurata in **hertz (Hz)**: il numero di oscillazioni al secondo. Il microfono o il sensore dell'accordatore trasforma quella vibrazione in un segnale, e un algoritmo ne cerca la **periodicità**. Ogni nota, infatti, si ripete uguale a se stessa a intervalli regolari: quante volte si ripete in un secondo è proprio la frequenza fondamentale, cioè l'altezza della nota.
+
+Non ti serve capire la matematica dietro a questo calcolo. In pratica lo strumento ascolta la corda, trova quanto velocemente vibra e traduce quel numero nel nome di una nota, mostrandoti quanto sei lontano dal bersaglio.
+
+## La nota target è una frequenza
+
+Ogni nota corrisponde a una frequenza fissa in Hz. Il riferimento universale è il LA centrale, **A4 = 440 Hz**: da quel valore si ricavano per calcolo tutte le altre note. Sulla chitarra, per esempio, la 5a corda a vuoto è un A2 e vibra a **110 Hz**, esattamente due ottave sotto il LA di riferimento. L'accordatore conosce questi valori a memoria: misura la frequenza della tua corda, la confronta con quella della nota target e calcola la differenza. Se vuoi capire da dove arriva il numero 440 e come le frequenze diventano note, leggi [hertz, note musicali e il LA 440](/teoria/hertz-note-musicali-la-440).
+
+## Cosa sono i cent
+
+Lo scarto tra la tua corda e la nota giusta non si misura in Hz, ma in **cent**, un'unità più comoda perché uguale su tutte le note. Un cent è un centesimo di semitono: tra una nota e quella immediatamente successiva, cioè un semitono, ci sono **100 cent**.
+
+L'indicatore dell'accordatore mostra proprio questo scarto: quando l'ago o la barra sono al centro (zero cent) sei intonato, quando pendono verso il meno sei calante, verso il più sei crescente. Essere entro pochi cent dalla nota è più che sufficiente per suonare: differenze così piccole l'orecchio non le coglie, mentre uno scarto di decine di cent si sente eccome.
+
+## Cromatico: riconosce tutte e 12 le note
+
+Un accordatore **cromatico** riconosce tutte e 12 le note della scala — i dodici semitoni che dividono l'ottava — e non solo le sei corde dell'accordatura standard. Questo lo rende versatile: qualunque nota tu suoni, lui la identifica e ti dice di quanti cent sei fuori. È la ragione per cui un cromatico gestisce senza problemi anche le accordature alternative, dove le corde puntano a note diverse dalle solite EADGBE.
+
+## Microfono, clip o pedale
+
+Tutti gli accordatori fanno la stessa pitch detection; cambia solo **come captano il suono**.
+
+| Tipo | Come capta il suono | Quando conviene |
+|------|---------------------|-----------------|
+| A microfono | Capta il suono che viaggia nell'aria | A casa, in studio, ambienti silenziosi |
+| A clip | Legge la vibrazione del legno dalla paletta | Ambienti rumorosi, palco, prove |
+| A pedale | Legge il segnale elettrico dal jack | Chitarra elettrica dal vivo |
+
+Gli accordatori **a microfono** comprendono le app, i modelli da tavolo e gli strumenti web: un esempio via browser è [EasyGuitarTuner](https://guitar.sisqo.dev), un accordatore cromatico gratuito con cui suoni la corda e la porti alla nota target leggendo lo scarto a schermo. Il loro limite è il **rumore**: il microfono capta ogni suono presente nell'aria — voci, altri strumenti, traffico — e l'algoritmo fatica a isolare la fondamentale della tua corda, così l'indicatore "balla" e la lettura diventa lenta. Per questo danno il meglio in ambienti silenziosi; trovi una panoramica completa nella guida all'[accordatore online gratis](/accordatori/accordatore-online-gratis).
+
+Gli accordatori **a clip** aggirano il problema: agganciati alla paletta, leggono la vibrazione che attraversa il legno e ignorano i suoni nell'aria, restando affidabili anche nel caos di un soundcheck. Quelli **a pedale**, infine, sono pensati per l'elettrica: ricevono il segnale direttamente dal jack, quindi non sono disturbati da nulla e di solito azzerano l'uscita mentre accordi.
+
+## Dalla teoria alla pratica
+
+Capire questo meccanismo rende l'accordatura più consapevole: sai perché l'indicatore reagisce come reagisce e perché in un locale rumoroso conviene un clip. Quando vuoi passare ai gesti concreti, segui la [guida per accordare la chitarra con un accordatore](/come-accordare/come-accordare-chitarra-con-accordatore) corda per corda.

@@ -88,6 +88,31 @@ const navOrder: Record<string, string[]> = {
     'accordatura-ukulele-baritono-dgbe',
     'low-g-high-g-ukulele',
   ],
+  'accordature-alternative': [
+    'drop-d',
+    'double-drop-d',
+    'open-g',
+    'open-d',
+    'open-c',
+    'open-e',
+    'dadgad',
+    'nashville',
+    'accordature-alternative-quali-sono',
+  ],
+  'accordature-autore': [
+    'accordature-grandi-chitarristi',
+    'accordature-blues-slide',
+    'accordature-fingerstyle',
+    'accordature-metal-drop-c-drop-b',
+    'canzoni-famose-dadgad',
+  ],
+  teoria: [
+    'come-funziona-accordatore-pitch-detection',
+    'hertz-note-musicali-la-440',
+    'temperamento-equabile-vs-naturale',
+    'perche-chitarra-si-scorda',
+    'quale-accordatura-per-la-tua-voce',
+  ],
 }
 
 function navIndex(a: ArticleMeta): number {
