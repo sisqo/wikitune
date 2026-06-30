@@ -3,18 +3,24 @@ type CTALinkProps = {
 }
 
 export default function CTALink({ label }: CTALinkProps) {
-  const text = label ?? 'Accorda la chitarra gratis con EasyGuitarTuner'
+  const text = label ?? 'Accordatore web gratuito per chitarra e ukulele'
 
   return (
-    <div className="my-8 rounded-lg border border-blue-200 bg-blue-50 p-5">
-      <p className="mb-3 text-sm font-medium text-blue-800">{text}</p>
+    <div className="my-10 border border-gold/30 bg-gold-lt px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
+      <div className="flex-1">
+        <p className="font-display italic text-lg text-spruce leading-snug">{text}</p>
+        <p className="mt-1 text-sm text-resin">
+          Dal browser, senza installare nulla.
+        </p>
+      </div>
       <a
         href="https://guitar.sisqo.dev"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+        className="shrink-0 inline-flex items-center gap-2 bg-spruce text-ivory text-sm font-medium px-5 py-2.5 hover:bg-ink transition-colors"
       >
-        Apri EasyGuitarTuner — gratis, dal browser
+        EasyGuitarTuner
+        <span aria-hidden="true" className="text-gold">→</span>
       </a>
     </div>
   )

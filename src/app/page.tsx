@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { categorie } from '@/lib/content'
+import StringLines from '@/components/StringLines'
+import SiteHeader from '@/components/SiteHeader'
+import SiteFooter from '@/components/SiteFooter'
 
 export const metadata: Metadata = {
   title: 'WikiTune — Accordature per chitarra e ukulele',
@@ -8,73 +11,95 @@ export const metadata: Metadata = {
     'Tutte le accordature per chitarra e ukulele: standard, alternative, Drop D, Open G, DADGAD e molto altro. Guide pratiche e teoria.',
 }
 
+const CATEGORY_ICONS: Record<string, string> = {
+  'accordatori':           '♩',
+  'come-accordare':        '♪',
+  'accordature-di-base':   '♫',
+  'accordature-alternative': '♬',
+  'accordature-autore':    '𝄞',
+  'teoria':                '𝄢',
+}
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b border-gray-200">
-        <div className="mx-auto max-w-3xl px-4 py-6">
-          <h1 className="text-2xl font-bold text-gray-900">WikiTune</h1>
-          <p className="mt-1 text-sm text-gray-500">Accordature per chitarra e ukulele</p>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col">
+      <SiteHeader />
 
-      <main className="mx-auto max-w-3xl px-4 py-12">
-        <section className="mb-12">
-          <h2 className="mb-3 text-3xl font-bold text-gray-900">
-            La guida completa alle accordature
-          </h2>
-          <p className="text-lg text-gray-600">
-            Che tu stia cercando l'accordatura standard EADGBE, il Drop D per il rock o il DADGAD
-            per il fingerstyle celtico: qui trovi guide pratiche, tabelle delle frequenze e
-            spiegazioni teoriche su ogni accordatura per chitarra e ukulele.
+      {/* Hero */}
+      <section className="bg-ivory pt-16 pb-10 px-6">
+        <div className="mx-auto max-w-4xl">
+          <StringLines />
+
+          <div className="mt-8">
+            <h1 className="font-display italic text-6xl sm:text-7xl lg:text-8xl text-ink leading-none tracking-tight">
+              Accordature
+            </h1>
+            <p className="mt-3 font-display italic text-2xl sm:text-3xl text-resin">
+              per chitarra e ukulele
+            </p>
+          </div>
+
+          <p className="mt-8 text-base sm:text-lg text-resin max-w-xl leading-relaxed">
+            Dalla standard{' '}
+            <code className="font-mono text-sm text-gold bg-gold-lt px-1.5 py-0.5 rounded">
+              EADGBE
+            </code>{' '}
+            al Drop D, dall'Open G al DADGAD: guide pratiche, tabelle delle frequenze e teoria
+            per ogni accordatura.
           </p>
-          <p className="mt-3 text-gray-600">
-            Per accordare subito il tuo strumento puoi usare{' '}
+
+          <p className="mt-4 text-sm text-resin/70">
+            Per accordare subito:{' '}
             <a
               href="https://guitar.sisqo.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-blue-600 hover:underline"
+              className="text-gold hover:underline underline-offset-2 font-medium"
             >
               EasyGuitarTuner
             </a>
-            , accordatore web gratuito per chitarra 6 corde, 12 corde e ukulele.
+            {' '}— accordatore web, gratis, nessuna installazione.
           </p>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <h2 className="mb-6 text-xl font-semibold text-gray-900">Categorie</h2>
-          <ul className="grid gap-4 sm:grid-cols-2">
+      {/* Divider */}
+      <div className="h-px bg-border mx-6" />
+
+      {/* Categories */}
+      <section className="flex-1 bg-ivory py-14 px-6">
+        <div className="mx-auto max-w-4xl">
+          <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-resin/50 mb-8">
+            Categorie
+          </p>
+
+          <ul className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 border border-border">
             {categorie.map((cat) => (
-              <li key={cat.slug}>
+              <li key={cat.slug} className="bg-ivory">
                 <Link
                   href={`/${cat.slug}`}
-                  className="group block rounded-lg border border-gray-200 p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                  className="group flex flex-col gap-2 p-6 h-full hover:bg-gold-lt transition-colors duration-200"
                 >
-                  <h3 className="font-semibold text-gray-900 group-hover:text-blue-700">
+                  <span className="text-2xl text-resin/40 group-hover:text-gold transition-colors" aria-hidden="true">
+                    {CATEGORY_ICONS[cat.slug] ?? '♩'}
+                  </span>
+                  <span className="font-display italic text-xl text-ink group-hover:text-spruce transition-colors leading-snug">
                     {cat.nome}
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{cat.intro}</p>
+                  </span>
+                  <span className="text-sm text-resin leading-relaxed">
+                    {cat.intro}
+                  </span>
+                  <span className="mt-auto pt-3 text-xs font-mono tracking-wider text-gold/0 group-hover:text-gold transition-colors">
+                    Esplora →
+                  </span>
                 </Link>
               </li>
             ))}
           </ul>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <footer className="border-t border-gray-200 py-8 text-center text-sm text-gray-400">
-        <p>
-          WikiTune — Accordature per chitarra e ukulele.{' '}
-          <a
-            href="https://guitar.sisqo.dev"
-            className="underline hover:text-gray-600"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            EasyGuitarTuner
-          </a>
-        </p>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import CTALink from './CTALink'
+import SiteHeader from './SiteHeader'
+import SiteFooter from './SiteFooter'
 import type { FAQ, Categoria } from '@/lib/content'
 
 type ArticleLayoutProps = {
@@ -18,7 +19,7 @@ export default function ArticleLayout({
   children,
 }: ArticleLayoutProps) {
   const ctaLabel = tuning_ref
-    ? `Accorda in ${tuning_ref.replace(/-/g, ' ')} con EasyGuitarTuner — gratis, dal browser`
+    ? `Accorda in ${tuning_ref.replace(/-/g, ' ')} con EasyGuitarTuner`
     : undefined
 
   const faqJsonLd = faqs?.length
@@ -42,38 +43,45 @@ export default function ArticleLayout({
         />
       )}
 
-      <div className="min-h-screen bg-white">
-        <header className="border-b border-gray-200 bg-white">
-          <div className="mx-auto max-w-3xl px-4 py-4">
-            <nav className="flex items-center gap-2 text-sm text-gray-500">
-              <Link href="/" className="hover:text-gray-900">
-                WikiTune
-              </Link>
-              <span>/</span>
-              <Link href={`/${categoria.slug}`} className="hover:text-gray-900">
-                {categoria.nome}
-              </Link>
-            </nav>
-          </div>
-        </header>
+      <div className="min-h-screen flex flex-col">
+        <SiteHeader
+          crumbs={[
+            { label: categoria.nome, href: `/${categoria.slug}` },
+            { label: title, href: `/${categoria.slug}` },
+          ]}
+        />
 
-        <main className="mx-auto max-w-3xl px-4 py-10">
-          <h1 className="mb-6 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
-            {title}
-          </h1>
+        <main className="flex-1 mx-auto w-full max-w-3xl px-6 py-12">
+          {/* Title */}
+          <header className="mb-10">
+            <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-resin/50 mb-4">
+              {categoria.nome}
+            </p>
+            <h1 className="font-display italic text-4xl sm:text-5xl lg:text-6xl text-ink leading-tight tracking-tight">
+              {title}
+            </h1>
+            <div className="mt-6 h-px bg-gradient-to-r from-gold via-border to-transparent" />
+          </header>
 
-          <article className="prose prose-gray max-w-none">{children}</article>
+          {/* Body */}
+          <article className="prose prose-lg max-w-none font-sans">
+            {children}
+          </article>
 
+          {/* CTA */}
           <CTALink label={ctaLabel} />
 
+          {/* FAQ */}
           {faqs && faqs.length > 0 && (
-            <section className="mt-12 border-t border-gray-200 pt-10">
-              <h2 className="mb-6 text-2xl font-bold text-gray-900">Domande frequenti</h2>
-              <dl className="space-y-6">
+            <section className="mt-10 pt-10 border-t border-border">
+              <h2 className="font-display italic text-3xl text-ink mb-8">
+                Domande frequenti
+              </h2>
+              <dl className="space-y-7">
                 {faqs.map(({ q, a }) => (
-                  <div key={q}>
-                    <dt className="font-semibold text-gray-900">{q}</dt>
-                    <dd className="mt-2 text-gray-600">{a}</dd>
+                  <div key={q} className="grid sm:grid-cols-[1fr_2fr] gap-3 sm:gap-8">
+                    <dt className="font-medium text-ink leading-snug">{q}</dt>
+                    <dd className="text-resin leading-relaxed">{a}</dd>
                   </div>
                 ))}
               </dl>
@@ -81,19 +89,7 @@ export default function ArticleLayout({
           )}
         </main>
 
-        <footer className="border-t border-gray-200 py-8 text-center text-sm text-gray-400">
-          <p>
-            WikiTune — Accordature per chitarra e ukulele.{' '}
-            <a
-              href="https://guitar.sisqo.dev"
-              className="underline hover:text-gray-600"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              EasyGuitarTuner
-            </a>
-          </p>
-        </footer>
+        <SiteFooter />
       </div>
     </>
   )
