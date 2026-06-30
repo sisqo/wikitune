@@ -13,17 +13,17 @@ export default function CategoryHub({ categoria, articles }: CategoryHubProps) {
     <div className="min-h-screen flex flex-col">
       <SiteHeader crumbs={[{ label: categoria.nome, href: `/${categoria.slug}` }]} />
 
-      <main className="flex-1 mx-auto w-full max-w-4xl px-6 py-12">
+      <main className="flex-1 mx-auto w-full max-w-4xl px-6 py-10">
         <header className="mb-10 pb-8 border-b border-border">
-          <h1 className="font-display italic text-5xl sm:text-6xl text-ink leading-none tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-black text-ink leading-tight tracking-tight">
             {categoria.nome}
           </h1>
-          <p className="mt-4 text-resin max-w-xl leading-relaxed">{categoria.intro}</p>
+          <p className="mt-4 text-muted max-w-2xl leading-relaxed">{categoria.intro}</p>
         </header>
 
         {articles.length === 0 ? (
-          <p className="text-resin/60 font-mono text-sm">
-            — Nessun articolo pubblicato in questa categoria.
+          <p className="text-muted/60 text-sm">
+            Nessun articolo pubblicato in questa categoria.
           </p>
         ) : (
           <ul className="divide-y divide-border">
@@ -31,20 +31,18 @@ export default function CategoryHub({ categoria, articles }: CategoryHubProps) {
               <li key={a.slug}>
                 <Link
                   href={`/${a.categoria}/${a.slug}`}
-                  className="group flex items-start justify-between gap-6 py-6 hover:text-ink transition-colors"
+                  className="group grid sm:grid-cols-[2fr_3fr_24px] gap-x-8 gap-y-1 py-6 items-start"
                 >
-                  <div className="min-w-0">
-                    <h2 className="font-display italic text-xl sm:text-2xl text-ink group-hover:text-spruce leading-snug transition-colors">
-                      {a.title}
-                    </h2>
-                    {a.description && (
-                      <p className="mt-1.5 text-sm text-resin leading-relaxed line-clamp-2">
-                        {a.description}
-                      </p>
-                    )}
-                  </div>
+                  <h2 className="font-bold text-lg text-ink group-hover:text-gold transition-colors duration-150 leading-snug">
+                    {a.title}
+                  </h2>
+                  {a.description && (
+                    <p className="text-muted text-sm sm:text-base leading-relaxed line-clamp-2">
+                      {a.description}
+                    </p>
+                  )}
                   <span
-                    className="shrink-0 mt-1 text-border group-hover:text-gold transition-colors text-lg"
+                    className="hidden sm:block text-border group-hover:text-gold transition-colors duration-150 text-lg self-center"
                     aria-hidden="true"
                   >
                     →

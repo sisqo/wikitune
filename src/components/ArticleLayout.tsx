@@ -47,24 +47,20 @@ export default function ArticleLayout({
         <SiteHeader
           crumbs={[
             { label: categoria.nome, href: `/${categoria.slug}` },
-            { label: title, href: `/${categoria.slug}` },
+            { label: title, href: '#' },
           ]}
         />
 
-        <main className="flex-1 mx-auto w-full max-w-3xl px-6 py-12">
-          {/* Title */}
-          <header className="mb-10">
-            <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-resin/50 mb-4">
-              {categoria.nome}
-            </p>
-            <h1 className="font-display italic text-4xl sm:text-5xl lg:text-6xl text-ink leading-tight tracking-tight">
+        <main className="flex-1 mx-auto w-full max-w-3xl px-6 py-10">
+          {/* Title block */}
+          <header className="mb-10 pb-8 border-b border-border">
+            <h1 className="text-4xl sm:text-5xl font-black text-ink leading-tight tracking-tight">
               {title}
             </h1>
-            <div className="mt-6 h-px bg-gradient-to-r from-gold via-border to-transparent" />
           </header>
 
           {/* Body */}
-          <article className="prose prose-lg max-w-none font-sans">
+          <article className="prose prose-lg max-w-none">
             {children}
           </article>
 
@@ -74,14 +70,14 @@ export default function ArticleLayout({
           {/* FAQ */}
           {faqs && faqs.length > 0 && (
             <section className="mt-10 pt-10 border-t border-border">
-              <h2 className="font-display italic text-3xl text-ink mb-8">
+              <h2 className="text-2xl font-black text-ink mb-8">
                 Domande frequenti
               </h2>
-              <dl className="space-y-7">
+              <dl className="space-y-8">
                 {faqs.map(({ q, a }) => (
-                  <div key={q} className="grid sm:grid-cols-[1fr_2fr] gap-3 sm:gap-8">
-                    <dt className="font-medium text-ink leading-snug">{q}</dt>
-                    <dd className="text-resin leading-relaxed">{a}</dd>
+                  <div key={q} className="grid sm:grid-cols-[2fr_3fr] gap-3 sm:gap-8">
+                    <dt className="font-bold text-ink leading-snug">{q}</dt>
+                    <dd className="text-muted leading-relaxed">{a}</dd>
                   </div>
                 ))}
               </dl>

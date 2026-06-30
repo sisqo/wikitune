@@ -11,86 +11,73 @@ export const metadata: Metadata = {
     'Tutte le accordature per chitarra e ukulele: standard, alternative, Drop D, Open G, DADGAD e molto altro. Guide pratiche e teoria.',
 }
 
-const CATEGORY_ICONS: Record<string, string> = {
-  'accordatori':           '♩',
-  'come-accordare':        '♪',
-  'accordature-di-base':   '♫',
-  'accordature-alternative': '♬',
-  'accordature-autore':    '𝄞',
-  'teoria':                '𝄢',
-}
-
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
 
       {/* Hero */}
-      <section className="bg-ivory pt-16 pb-10 px-6">
+      <section className="pt-12 pb-10 px-6">
         <div className="mx-auto max-w-4xl">
           <StringLines />
 
           <div className="mt-8">
-            <h1 className="font-display italic text-6xl sm:text-7xl lg:text-8xl text-ink leading-none tracking-tight">
+            <h1 className="text-6xl sm:text-7xl font-black tracking-tight text-ink uppercase leading-none">
               Accordature
             </h1>
-            <p className="mt-3 font-display italic text-2xl sm:text-3xl text-resin">
+            <p className="mt-3 text-xl sm:text-2xl font-light text-muted">
               per chitarra e ukulele
             </p>
           </div>
 
-          <p className="mt-8 text-base sm:text-lg text-resin max-w-xl leading-relaxed">
+          <p className="mt-8 text-base sm:text-lg text-muted max-w-xl leading-relaxed">
             Dalla standard{' '}
-            <code className="font-mono text-sm text-gold bg-gold-lt px-1.5 py-0.5 rounded">
+            <code className="font-mono text-sm text-gold bg-gold-lt px-1.5 py-0.5 rounded-sm">
               EADGBE
             </code>{' '}
-            al Drop D, dall'Open G al DADGAD: guide pratiche, tabelle delle frequenze e teoria
+            al Drop D, dall'Open G al DADGAD: guide pratiche, tabelle di frequenze e teoria
             per ogni accordatura.
           </p>
 
-          <p className="mt-4 text-sm text-resin/70">
+          <p className="mt-3 text-sm text-muted/80">
             Per accordare subito:{' '}
             <a
               href="https://guitar.sisqo.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold hover:underline underline-offset-2 font-medium"
+              className="text-gold hover:underline underline-offset-2 font-semibold"
             >
               EasyGuitarTuner
             </a>
-            {' '}— accordatore web, gratis, nessuna installazione.
+            {' '}— accordatore web gratuito, nessuna installazione.
           </p>
         </div>
       </section>
 
       {/* Divider */}
-      <div className="h-px bg-border mx-6" />
+      <div className="h-px bg-border mx-6 my-2" />
 
-      {/* Categories */}
-      <section className="flex-1 bg-ivory py-14 px-6">
+      {/* Category index */}
+      <section className="flex-1 py-10 px-6">
         <div className="mx-auto max-w-4xl">
-          <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-resin/50 mb-8">
-            Categorie
-          </p>
-
-          <ul className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 border border-border">
+          <ul className="divide-y divide-border">
             {categorie.map((cat) => (
-              <li key={cat.slug} className="bg-ivory">
+              <li key={cat.slug}>
                 <Link
                   href={`/${cat.slug}`}
-                  className="group flex flex-col gap-2 p-6 h-full hover:bg-gold-lt transition-colors duration-200"
+                  className="group grid sm:grid-cols-[2fr_3fr_24px] gap-x-8 gap-y-1 py-6 sm:py-7 items-start"
                 >
-                  <span className="text-2xl text-resin/40 group-hover:text-gold transition-colors" aria-hidden="true">
-                    {CATEGORY_ICONS[cat.slug] ?? '♩'}
-                  </span>
-                  <span className="font-display italic text-xl text-ink group-hover:text-spruce transition-colors leading-snug">
+                  <span className="font-bold text-lg text-ink group-hover:text-gold transition-colors duration-150 leading-snug">
                     {cat.nome}
                   </span>
-                  <span className="text-sm text-resin leading-relaxed">
+                  <span className="text-muted text-sm sm:text-base leading-relaxed">
                     {cat.intro}
                   </span>
-                  <span className="mt-auto pt-3 text-xs font-mono tracking-wider text-gold/0 group-hover:text-gold transition-colors">
-                    Esplora →
+                  <span
+                    className="hidden sm:block text-border group-hover:text-gold transition-colors duration-150 text-lg self-center"
+                    aria-hidden="true"
+                  >
+                    →
                   </span>
                 </Link>
               </li>

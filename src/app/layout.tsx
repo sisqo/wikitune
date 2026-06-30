@@ -1,18 +1,14 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from 'next/font/google'
+import { Titillium_Web, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+// Titillium Web — progettato all'Accademia di Belle Arti di Urbino (IT)
+// Carattere diretto e affidabile, non nella reflex-reject list
+const titillium = Titillium_Web({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '600', '700', '900'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-titillium',
   display: 'swap',
 })
 
@@ -39,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="it" className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
-      <body className="antialiased bg-ivory text-ink font-sans">{children}</body>
+    <html lang="it" className={`${titillium.variable} ${jetbrains.variable}`}>
+      <body className="antialiased bg-bg text-ink font-sans">{children}</body>
     </html>
   )
 }
