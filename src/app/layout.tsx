@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Titillium_Web, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import SidebarShell from '@/components/SidebarShell'
+import { categorie, getPublishedArticles } from '@/lib/content'
 
-// Titillium Web — progettato all'Accademia di Belle Arti di Urbino (IT)
-// Carattere diretto e affidabile, non nella reflex-reject list
 const titillium = Titillium_Web({
   subsets: ['latin'],
   weight: ['300', '400', '600', '700', '900'],
@@ -34,9 +34,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const articles = getPublishedArticles()
+
   return (
     <html lang="it" className={`${titillium.variable} ${jetbrains.variable}`}>
-      <body className="antialiased bg-bg text-ink font-sans">{children}</body>
+      <body className="antialiased bg-bg text-ink font-sans">
+        <SidebarShell categorie={categorie} articles={articles}>
+          {children}
+        </SidebarShell>
+      </body>
     </html>
   )
 }

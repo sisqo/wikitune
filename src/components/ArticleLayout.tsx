@@ -1,6 +1,4 @@
 import CTALink from './CTALink'
-import SiteHeader from './SiteHeader'
-import SiteFooter from './SiteFooter'
 import type { FAQ, Categoria } from '@/lib/content'
 
 type ArticleLayoutProps = {
@@ -13,7 +11,6 @@ type ArticleLayoutProps = {
 
 export default function ArticleLayout({
   title,
-  categoria,
   tuning_ref,
   faqs,
   children,
@@ -43,49 +40,34 @@ export default function ArticleLayout({
         />
       )}
 
-      <div className="min-h-screen flex flex-col">
-        <SiteHeader
-          crumbs={[
-            { label: categoria.nome, href: `/${categoria.slug}` },
-            { label: title, href: '#' },
-          ]}
-        />
+      <div className="px-6 py-10 max-w-3xl mx-auto">
+        <header className="mb-10 pb-8 border-b border-border">
+          <h1 className="text-4xl sm:text-5xl font-black text-ink leading-tight tracking-tight">
+            {title}
+          </h1>
+        </header>
 
-        <main className="flex-1 mx-auto w-full max-w-3xl px-6 py-10">
-          {/* Title block */}
-          <header className="mb-10 pb-8 border-b border-border">
-            <h1 className="text-4xl sm:text-5xl font-black text-ink leading-tight tracking-tight">
-              {title}
-            </h1>
-          </header>
+        <article className="prose prose-lg max-w-none">
+          {children}
+        </article>
 
-          {/* Body */}
-          <article className="prose prose-lg max-w-none">
-            {children}
-          </article>
+        <CTALink label={ctaLabel} />
 
-          {/* CTA */}
-          <CTALink label={ctaLabel} />
-
-          {/* FAQ */}
-          {faqs && faqs.length > 0 && (
-            <section className="mt-10 pt-10 border-t border-border">
-              <h2 className="text-2xl font-black text-ink mb-8">
-                Domande frequenti
-              </h2>
-              <dl className="space-y-8">
-                {faqs.map(({ q, a }) => (
-                  <div key={q} className="grid sm:grid-cols-[2fr_3fr] gap-3 sm:gap-8">
-                    <dt className="font-bold text-ink leading-snug">{q}</dt>
-                    <dd className="text-muted leading-relaxed">{a}</dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
-          )}
-        </main>
-
-        <SiteFooter />
+        {faqs && faqs.length > 0 && (
+          <section className="mt-10 pt-10 border-t border-border">
+            <h2 className="text-2xl font-black text-ink mb-8">
+              Domande frequenti
+            </h2>
+            <dl className="space-y-8">
+              {faqs.map(({ q, a }) => (
+                <div key={q} className="grid sm:grid-cols-[2fr_3fr] gap-3 sm:gap-8">
+                  <dt className="font-bold text-ink leading-snug">{q}</dt>
+                  <dd className="text-muted leading-relaxed">{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
       </div>
     </>
   )
