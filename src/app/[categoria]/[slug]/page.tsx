@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import ArticleLayout from '@/components/ArticleLayout'
 import {
   getArticleBySlug,
@@ -49,7 +50,10 @@ export default async function ArticlePage({ params }: Props) {
       tuning_ref={article.tuning_ref}
       faqs={article.faqs}
     >
-      <MDXRemote source={article.content} />
+      <MDXRemote
+        source={article.content}
+        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+      />
     </ArticleLayout>
   )
 }
