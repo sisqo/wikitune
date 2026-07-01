@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Titillium_Web, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import SidebarShell from '@/components/SidebarShell'
@@ -27,6 +27,16 @@ export const metadata: Metadata = {
   description:
     "Guide e risorse sulle accordature per chitarra e ukulele: standard, alternative, d'autore e teoria.",
   metadataBase: new URL('https://wikitune.sisqo.dev'),
+  applicationName: 'WikiTune',
+  appleWebApp: {
+    capable: true,
+    title: 'WikiTune',
+    statusBarStyle: 'default',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#2C4A2E',
 }
 
 export default function RootLayout({
