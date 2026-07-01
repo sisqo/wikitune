@@ -17,6 +17,8 @@ module.exports = {
         muted:    '#546070',
         gold:     '#C4872A',
         'gold-lt':'#FBF2E4',
+        // oklch(0.75 0.13 75) — brighter gold, 4.6:1 on spruce (base gold is only ~3.2:1 on dark)
+        'gold-dark': '#E0A94A',
         spruce:   '#2C4A2E',
         // oklch(0.88 0.01 245)
         border:   '#D0D8E4',
