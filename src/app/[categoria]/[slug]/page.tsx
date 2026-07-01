@@ -3,11 +3,14 @@ import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import ArticleLayout from '@/components/ArticleLayout'
+import StarRating from '@/components/StarRating'
 import {
   getArticleBySlug,
   getCategoriaBySlug,
   getAllSlugs,
 } from '@/lib/content'
+
+const mdxComponents = { StarRating }
 
 type Props = {
   params: Promise<{ categoria: string; slug: string }>
@@ -53,6 +56,7 @@ export default async function ArticlePage({ params }: Props) {
       <MDXRemote
         source={article.content}
         options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        components={mdxComponents}
       />
     </ArticleLayout>
   )
