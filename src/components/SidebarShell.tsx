@@ -19,6 +19,15 @@ function PickMark({ className }: { className?: string }) {
         fill="currentColor"
         d="M10 2.2c-4.1 0-7.1 3.6-7.1 7.6 0 4.3 3.2 7.5 7.1 8 3.9-.5 7.1-3.7 7.1-8 0-4-3-7.6-7.1-7.6z"
       />
+      {/* facet line — always sits on the spruce header strip, so the cutout color is hardcoded */}
+      <path
+        d="M7.3 4.7c1.4-1 4-1 5.4 0"
+        stroke="#2C4A2E"
+        strokeWidth="0.9"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.6"
+      />
     </svg>
   )
 }
@@ -32,7 +41,10 @@ export default function SidebarShell({ categorie, articles, children }: Props) {
   }, [pathname])
 
   const navContent = (
-    <nav className="flex-1 overflow-y-auto py-4 space-y-5" aria-label="Navigazione principale">
+    <nav
+      className="flex-1 overflow-y-auto bg-spruce-lt py-4 space-y-5"
+      aria-label="Navigazione principale"
+    >
       {categorie.map((cat) => {
         const catArticles = articles.filter((a) => a.categoria === cat.slug)
         const isCatActive =
@@ -44,14 +56,14 @@ export default function SidebarShell({ categorie, articles, children }: Props) {
               href={`/${cat.slug}`}
               className={`group mx-2 flex items-center gap-2.5 rounded-lg px-3 py-2 text-base font-bold tracking-tight transition-colors duration-150 ${
                 isCatActive
-                  ? 'bg-gold/15 text-gold-dark'
-                  : 'text-surface/85 hover:bg-surface/8 hover:text-surface'
+                  ? 'bg-gold/15 text-gold'
+                  : 'text-spruce hover:bg-spruce/10'
               }`}
             >
               <CategoryIcon
                 slug={cat.slug}
-                className={`h-[18px] w-[18px] shrink-0 ${
-                  isCatActive ? 'text-gold-dark' : 'text-surface/55 group-hover:text-surface/85'
+                className={`h-5 w-5 shrink-0 ${
+                  isCatActive ? 'text-gold' : 'text-spruce-muted group-hover:text-spruce'
                 }`}
               />
               <span>{cat.nome}</span>
@@ -67,8 +79,8 @@ export default function SidebarShell({ categorie, articles, children }: Props) {
                         href={href}
                         className={`block mx-2 rounded-md py-1.5 pl-10 pr-3 text-sm leading-snug transition-colors duration-150 ${
                           isActive
-                            ? 'bg-gold/10 font-semibold text-gold-dark'
-                            : 'text-surface/70 hover:bg-surface/8 hover:text-surface/95'
+                            ? 'bg-gold/10 font-semibold text-gold'
+                            : 'text-spruce-muted hover:bg-spruce/10 hover:text-spruce'
                         }`}
                       >
                         {a.title}
@@ -93,7 +105,7 @@ export default function SidebarShell({ categorie, articles, children }: Props) {
             pathname === '/' ? 'text-gold-dark' : 'text-surface hover:text-gold-dark'
           }`}
         >
-          <PickMark className="h-5 w-5 shrink-0 text-gold" />
+          <PickMark className="h-6 w-6 shrink-0 text-gold" />
           WikiTune
         </Link>
       </div>
@@ -104,7 +116,7 @@ export default function SidebarShell({ categorie, articles, children }: Props) {
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex flex-col w-60 lg:w-64 shrink-0 overflow-hidden border-r border-surface/10">
+      <aside className="hidden md:flex flex-col w-60 lg:w-64 shrink-0 overflow-hidden border-r border-spruce/15">
         {sidebarInner}
       </aside>
 
@@ -155,7 +167,7 @@ export default function SidebarShell({ categorie, articles, children }: Props) {
             href="/"
             className="flex items-center gap-2 text-xl font-black text-surface tracking-tight hover:text-gold-dark transition-colors"
           >
-            <PickMark className="h-[18px] w-[18px] shrink-0 text-gold" />
+            <PickMark className="h-5 w-5 shrink-0 text-gold" />
             WikiTune
           </Link>
         </div>

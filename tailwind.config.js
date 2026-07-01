@@ -20,6 +20,10 @@ module.exports = {
         // oklch(0.75 0.13 75) — brighter gold, 4.6:1 on spruce (base gold is only ~3.2:1 on dark)
         'gold-dark': '#E0A94A',
         spruce:   '#2C4A2E',
+        // oklch(0.965 0.012 145) — pale spruce tint, sidebar nav body (8.8:1 for spruce text on it)
+        'spruce-lt': '#EEF3EA',
+        // oklch(0.47 0.035 145) — muted spruce-green, 4.9:1 on spruce-lt
+        'spruce-muted': '#5B6E5C',
         // oklch(0.88 0.01 245)
         border:   '#D0D8E4',
       },

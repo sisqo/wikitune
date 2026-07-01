@@ -9,33 +9,36 @@ type Props = {
 export default function CategoryIcon({ slug, className }: Props) {
   switch (slug) {
     case 'accordatori':
+      // A clip-tuner device (body + meter + needle), not a bare dial —
+      // a circle-plus-line alone reads as the ISO power symbol.
       return (
         <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
-          <circle cx="10" cy="10.5" r="6.75" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M10 10.5V5.75" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-          <path d="M10 3.4v1.15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          <rect x="4" y="2.4" width="12" height="15.2" rx="3" stroke="currentColor" strokeWidth="1.8" />
+          <circle cx="10" cy="8.7" r="3.1" stroke="currentColor" strokeWidth="1.8" />
+          <path d="M10 8.7V6.3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M7.3 14.35h5.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
       )
     case 'come-accordare':
       return (
         <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
           <path
-            d="M7.25 2.75v5.4a2.75 2.75 0 0 0 5.5 0v-5.4"
+            d="M7.1 2.5v5.55a2.9 2.9 0 0 0 5.8 0V2.5"
             stroke="currentColor"
-            strokeWidth="1.6"
+            strokeWidth="2"
             strokeLinecap="round"
           />
-          <path d="M10 10.9v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-          <path d="M7.75 16.9h4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          <path d="M10 11.05v5.85" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M7.6 16.9h4.8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       )
     case 'accordature-di-base':
       return (
         <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
           <path
-            d="M3.5 4.5h13M3.5 7.9h13M3.5 11.3h13M3.5 14.7h13"
+            d="M3.2 4.3h13.6M3.2 7.85h13.6M3.2 11.4h13.6M3.2 14.95h13.6"
             stroke="currentColor"
-            strokeWidth="1.5"
+            strokeWidth="1.9"
             strokeLinecap="round"
           />
         </svg>
@@ -43,16 +46,16 @@ export default function CategoryIcon({ slug, className }: Props) {
     case 'accordature-alternative':
       return (
         <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
-          <path d="M3.5 4.5h13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M3.2 4.3h13.6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
           <path
-            d="M3.5 7.9h3.6l1.7-2.3 1.7 4.6 1.7-2.3h3.8"
+            d="M3.2 7.85h3.4l1.7-2.35 1.7 4.7 1.7-2.35h3.7"
             stroke="currentColor"
-            strokeWidth="1.5"
+            strokeWidth="1.9"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <path d="M3.5 11.3h13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M3.5 14.7h13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M3.2 11.4h13.6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
+          <path d="M3.2 14.95h13.6" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
         </svg>
       )
     default:
